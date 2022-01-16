@@ -5,8 +5,36 @@ const todoList = document.querySelector('.todo-list');
 
 //Functions
 const addTodo = (event) => {
-    event.preventDefault();  
+    event.preventDefault(); //prevent form from submitting 
     console.log('clicked')
+
+    //todo div
+    const todoDiv = document.createElement("div");
+    todoDiv.classList.add("todo");
+
+    //create li
+    const newTodo = document.createElement("li");
+    newTodo.innerText=todoInput.value;
+    newTodo.classList.add('todo-item');
+    todoDiv.appendChild(newTodo);
+
+    //checked button
+    const completedButton = document.createElement("button");
+    completedButton.innerHTML = '<i class="fas fa-check"></i>' ;
+    completedButton.classList.add("complete-btn");
+    todoDiv.appendChild(completedButton);
+
+    //trash button
+    const trashButton = document.createElement("button");
+    trashButton.innerHTML = '<i class="fas fa-trash"></i>' ;
+    trashButton.classList.add("trash-btn");
+    todoDiv.appendChild(trashButton);
+    
+    //append to list
+    todoList.appendChild(todoDiv);
+
+    //clear todoInput value
+    todoInput.value = ""
 }
 
 //Event Listeners
