@@ -27,8 +27,8 @@
 
 ### Links
 
-- Solution URL: [https://github.com/NandodkarAmogh/React-Weather-Progressive-Web-App](https://github.com/NandodkarAmogh/React-Weather-Progressive-Web-App)
-- Live Site URL: [https://react-weatherpwa.netlify.app/](https://react-weatherpwa.netlify.app/)
+- Solution URL: [https://github.com/NandodkarAmogh/Vanilla-JavaScript-Todo-App](https://github.com/NandodkarAmogh/Vanilla-JavaScript-Todo-App)
+- Live Site URL: [https://vanilla-javascript-todo-list.netlify.app/](https://vanilla-javascript-todo-list.netlify.app/)
 
 ## My process
 
