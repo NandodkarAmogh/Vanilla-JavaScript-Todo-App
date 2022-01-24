@@ -5,7 +5,15 @@
 }
 
 body {
-    background: linear-gradient(120deg, #fde68a, #c2410c);
+    /* background-image: linear-gradient(120deg, #fde68a, #c2410c) , url('https://images.unsplash.com/photo-1641154706848-fe27fd366032?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'); */
+    background-image: 
+              linear-gradient(45deg, rgba(
+                238, 158, 4, 0.62), rgba(
+                 20, 14, 1, 0.58)), url(
+    'https://images.unsplash.com/photo-1641154706848-fe27fd366032?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80') ;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
     /* background: linear-gradient(120deg, #fde68a, #713f12); */
     /* background: linear-gradient(120deg, #f6d365, #d97706) */
     color: white;
@@ -15,8 +23,7 @@ body {
 }
 
 header {
-    font-size: 1.5rem;
-
+    font-size: 2rem;
 }
 
 header,
@@ -123,6 +130,7 @@ select {
 
 select {
     color: #c2410c;
+    font-size: large;
     width: 10rem;
     cursor: pointer;
 }
@@ -141,4 +149,32 @@ select {
     background: white;
     color: #c2410c;
     transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        font-size: 1.5rem;
+    }
+    form input, form button {
+        /* padding: 0.5rem; */
+        font-size: 1rem;
+        border: none;
+        background: white;
+    }
+    select {
+        font-size:1rem;
+        width: 10rem;
+        padding: 15px 1px ;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input {
+        display: flex;
+        flex-direction: row;
+    }
+    
 }
