@@ -16,6 +16,7 @@
 
 ### Screenshot
 
+![](./images/Animation.gif)
 ![](./images/img1_desktop.png)
 ![](./images/img1_mobile.png)
 ![](./images/img2_desktop.png)
