@@ -7,20 +7,52 @@ const filterOption = document.querySelector('.filter-todo');
 //Functions
 const addTodo = (event) => {
     event.preventDefault(); //prevent form from submitting 
-    console.log('clicked')
+    let spaceRegex = /\w/g;
+    let whitespaces = todoInput.value.match(spaceRegex)
+    console.log(whitespaces)
 
+    if(whitespaces === null) {
+      return null  
+    }
     //todo div
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
 
-    //create li
-    const newTodo = document.createElement("li");
-    newTodo.innerText=todoInput.value;
+    //create input
+    const newTodo = document.createElement("input");
+    newTodo.type= 'text'
+    newTodo.value=todoInput.value;
     newTodo.classList.add('todo-item');
+    newTodo.setAttribute('readonly', 'readonly');
     todoDiv.appendChild(newTodo);
 
     //add todo to localstorage
     saveLocalTodos(todoInput.value)
+
+    //edit button
+    const editButton = document.createElement("button")
+    editButton.innerHTML = '<i class="fas fa-pen"></i>'
+    editButton.classList.add("edit-btn")
+    todoDiv.appendChild(editButton)
+
+    //event listener for edit operation
+
+    editButton.addEventListener('click', (e) => {
+        const item = e.target
+        if(item.classList[0] === 'edit-btn') {
+            item.classList.remove('edit-btn')
+            item.innerHTML = '<i class="fas fa-bookmark"></i>'
+            item.classList.add('save-btn')
+            item.parentElement.children[0].removeAttribute("readonly")
+            item.parentElement.children[0].focus();
+            console.log(item)
+        } else {
+            item.classList.remove('save-btn')
+            item.innerHTML = '<i class="fas fa-pen"></i>'
+            item.classList.add('edit-btn')
+            item.parentElement.children[0].setAttribute("readonly", "readonly")
+        }
+    })
 
     //checked button
     const completedButton = document.createElement("button");
@@ -34,6 +66,8 @@ const addTodo = (event) => {
     trashButton.classList.add("trash-btn");
     todoDiv.appendChild(trashButton);
     
+
+
     //append to list
     todoList.appendChild(todoDiv);
 
@@ -45,7 +79,17 @@ const deleteCheck = (e) => {
     const item = e.target;
 
     //delete todo
-    if(item.classList[0] === 'trash-btn') {
+    if(item.classList[0] !== 'complete-btn' &&  item.classList[0] !== 'trash-btn' && item.classList[0] !== 'edit-btn' && item.classList[0] !== 'save-btn') {
+        const todo = item.parentElement;
+        return null
+        // //animation
+        // todo.classList.add("fall")
+        // removeLocalTodos(todo);
+        // todo.addEventListener("transitionend", () =>{
+        //     todo.remove()
+        // })
+        
+    } else if (item.classList[0] == 'trash-btn' && item.classList[0] !== 'complete-btn' && item.classList[0] !== 'edit-btn' && item.classList[0] !== 'savet-btn') {
         const todo = item.parentElement;
         
         //animation
@@ -54,7 +98,6 @@ const deleteCheck = (e) => {
         todo.addEventListener("transitionend", () =>{
             todo.remove()
         })
-        
     }
 
     //checked
@@ -123,11 +166,38 @@ const getTodos = () => {
         const todoDiv = document.createElement("div");
         todoDiv.classList.add("todo");
 
-        //create li
-        const newTodo = document.createElement("li");
-        newTodo.innerText=todo;
+        //create input
+        const newTodo = document.createElement("input");
+        newTodo.type= 'text'
+        newTodo.value=todo;
         newTodo.classList.add('todo-item');
+        newTodo.setAttribute('readonly', 'readonly');
         todoDiv.appendChild(newTodo);
+
+         //edit button
+        const editButton = document.createElement("button")
+        editButton.innerHTML = '<i class="fas fa-pen"></i>'
+        editButton.classList.add("edit-btn")
+        todoDiv.appendChild(editButton)
+
+        //event listener for edit operation
+
+        editButton.addEventListener('click', (e) => {
+            const item = e.target
+            if(item.classList[0] === 'edit-btn') {
+                item.classList.remove('edit-btn')
+                item.innerHTML = '<i class="fas fa-bookmark"></i>'
+                item.classList.add('save-btn')
+                item.parentElement.children[0].removeAttribute("readonly")
+                item.parentElement.children[0].focus();
+                console.log(item)
+            } else {
+                item.classList.remove('save-btn')
+                item.innerHTML = '<i class="fas fa-pen"></i>'
+                item.classList.add('edit-btn')
+                item.parentElement.children[0].setAttribute("readonly", "readonly")
+            }
+        })
 
         //checked button
         const completedButton = document.createElement("button");
