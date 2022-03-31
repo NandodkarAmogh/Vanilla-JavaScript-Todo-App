@@ -78,11 +78,38 @@ const getTodos = () => {
         const todoDiv = document.createElement("div");
         todoDiv.classList.add("todo");
 
-        //create li
-        const newTodo = document.createElement("li");
-        newTodo.innerText=todo;
+        //create input
+        const newTodo = document.createElement("input");
+        newTodo.type= 'text'
+        newTodo.value=todo;
         newTodo.classList.add('todo-item');
+        newTodo.setAttribute('readonly', 'readonly');
         todoDiv.appendChild(newTodo);
+
+         //edit button
+        const editButton = document.createElement("button")
+        editButton.innerHTML = '<i class="fas fa-pen"></i>'
+        editButton.classList.add("edit-btn")
+        todoDiv.appendChild(editButton)
+
+        //event listener for edit operation
+
+        editButton.addEventListener('click', (e) => {
+            const item = e.target
+            if(item.classList[0] === 'edit-btn') {
+                item.classList.remove('edit-btn')
+                item.innerHTML = '<i class="fas fa-bookmark"></i>'
+                item.classList.add('save-btn')
+                item.parentElement.children[0].removeAttribute("readonly")
+                item.parentElement.children[0].focus();
+                console.log(item)
+            } else {
+                item.classList.remove('save-btn')
+                item.innerHTML = '<i class="fas fa-pen"></i>'
+                item.classList.add('edit-btn')
+                item.parentElement.children[0].setAttribute("readonly", "readonly")
+            }
+        })
 
         //checked button
         const completedButton = document.createElement("button");
@@ -115,6 +142,7 @@ const removeLocalTodos = (todo) => {
     todos.splice(todos.indexOf(todoIndex), 1);
     localStorage.setItem("todos", JSON.stringify(todos));
 }
+
 ```
 ## Author
 
