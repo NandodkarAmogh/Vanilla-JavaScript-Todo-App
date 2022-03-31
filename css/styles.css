@@ -10,11 +10,9 @@ body {
               linear-gradient(45deg, rgba(241, 239, 234, 0.62), rgba(
                  20, 14, 1, 0.58)), url(
     'https://images.unsplash.com/photo-1641154706848-fe27fd366032?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80') ;
-    background-position: top;
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    /* background: linear-gradient(120deg, #fde68a, #713f12); */
-    /* background: linear-gradient(120deg, #f6d365, #d97706) */
     color: white;
     font-family: "Poppins", sans-serif ;
     font-weight: 500;
@@ -93,6 +91,7 @@ form button:hover {
 .todo input {
     font-size: 1.1rem;
     flex: 1;
+    width: 8rem;
     border: none;
     outline: none;
 }
