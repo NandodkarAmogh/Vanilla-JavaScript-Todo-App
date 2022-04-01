@@ -21,9 +21,10 @@ body {
 
 header {
     font-size: 2.5rem;
-    background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+    /* background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; */
+    color: #fef9c3;
 }
 
 header,

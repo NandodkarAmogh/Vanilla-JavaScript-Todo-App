@@ -45,8 +45,20 @@ const addTodo = (event) => {
             item.classList.add('save-btn')
             item.parentElement.children[0].removeAttribute("readonly")
             item.parentElement.children[0].focus();
-            console.log(item)
         } else {
+            let spaceRegex = /\w/g;
+            let whitespaces = item.parentElement.children[0].value.match(spaceRegex)
+            console.log(item.parentElement)
+            console.log(whitespaces)
+            if(whitespaces === null) {
+                // return item.remove(parentElement.children)
+                const todo = item.parentElement
+                todo.classList.add("fall")
+                 removeLocalTodos(todo);
+                todo.addEventListener("transitionend", () =>{
+                    todo.remove()
+                })
+            }
             item.classList.remove('save-btn')
             item.innerHTML = '<i class="fas fa-pen"></i>'
             item.classList.add('edit-btn')
@@ -190,8 +202,20 @@ const getTodos = () => {
                 item.classList.add('save-btn')
                 item.parentElement.children[0].removeAttribute("readonly")
                 item.parentElement.children[0].focus();
-                console.log(item)
             } else {
+                let spaceRegex = /\w/g;
+                let whitespaces = item.parentElement.children[0].value.match(spaceRegex)
+                console.log(item.parentElement)
+                console.log(whitespaces)
+                if(whitespaces === null) {
+                    // return item.remove(parentElement.children)
+                    const todo = item.parentElement
+                    todo.classList.add("fall")
+                    removeLocalTodos(todo);
+                    todo.addEventListener("transitionend", () =>{
+                        todo.remove()
+                    })
+                }
                 item.classList.remove('save-btn')
                 item.innerHTML = '<i class="fas fa-pen"></i>'
                 item.classList.add('edit-btn')
